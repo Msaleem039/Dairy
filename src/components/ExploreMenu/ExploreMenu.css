@@ -1,0 +1,117 @@
+.explore-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.explore-menu h1{
+    color: #262626;
+    font-weight: 500;
+}
+
+.explore-menu-text{
+    max-width: 60%;
+    color: #808080;
+}
+
+.explore-menu-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin: 20px 0px;
+    overflow: scroll;
+}
+
+.explore-menu-list::-webkit-scrollbar{
+    display: none;
+}
+
+.explore-menu-list-item img{
+    width: 7.5vw;
+    min-width: 80px;
+    max-width: 120px;
+    height: 7.5vw;
+    min-height: 80px;
+    max-height: 120px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.explore-menu-list-item img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.explore-menu-list-item p{
+    margin-top: 10px;
+    color: #747474;
+    font-size: max(1.4vw,16px);
+    cursor: pointer;
+}
+
+.explore-menu hr{
+    margin: 10px 0px;
+    height: 2px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+.explore-menu-list-item .active{
+    border: 4px solid #667eea;
+    padding: 2px;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+    transform: scale(1.05);
+}
+
+@media (max-width:1050px){
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .explore-menu-list{
+        gap: 20px;
+    }
+
+    .explore-menu-list-item img{
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width:750px){
+    .explore-menu-list{
+        gap: 15px;
+        overflow-x: auto;
+        padding: 10px 0;
+    }
+
+    .explore-menu-list-item img{
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        min-height: 70px;
+    }
+
+    .explore-menu-list-item p{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:480px){
+    .explore-menu h1{
+        font-size: 24px;
+    }
+
+    .explore-menu-list-item img{
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        min-height: 60px;
+    }
+}

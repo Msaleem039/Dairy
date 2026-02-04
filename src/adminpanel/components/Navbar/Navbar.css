@@ -1,0 +1,32 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 2%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    min-height: 50px;
+    max-height: 60px;
+}
+
+.navbar .logo{
+    width: max(10%,80px);
+    height: auto;
+    object-fit: contain;
+}
+
+.navbar .profile{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.navbar .profile:hover {
+    transform: scale(1.1);
+    border-color: rgba(102, 126, 234, 0.4);
+}
