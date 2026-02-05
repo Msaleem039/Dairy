@@ -36,15 +36,19 @@ const Navbar = ({setShowLogin}) => {
        </Link>
         <ul className={`navbar-menu ${mobileMenuOpen ? 'mobile-menu-open' : ''}`}>
             <Link href='/' onClick={()=> handleMenuClick('home')} className={menu === 'home'?'active':''}>Dairy Delight</Link>
-            <a href='#explore-menu' onClick={()=> handleMenuClick('menu')} className={menu === 'menu'?'active':''}>Products</a>
-            <a href='#app-download' onClick={()=> handleMenuClick('mobile-app')} className={menu === 'mobile-app'?'active':''}>About Us</a>
-            <a href='#footer' onClick={()=> handleMenuClick('contact-us')} className={menu === 'contact-us'?'active':''}>Contact Us</a>
+            <Link href='/products' onClick={()=> handleMenuClick('menu')} className={menu === 'menu'?'active':''}>Products</Link>
+            <Link href='/about' onClick={()=> handleMenuClick('mobile-app')} className={menu === 'mobile-app'?'active':''}>About Us</Link>
+            <Link href='/contact' onClick={()=> handleMenuClick('contact-us')} className={menu === 'contact-us'?'active':''}>Contact Us</Link>
         </ul>
         <div className="navbar-right">
             <div className="navbar-search-icon">
                 <Link href='/cart'>
                   <img 
-                    src={assets.basket_icon?.src || assets.basket_icon} 
+                    src={
+                      typeof assets.basket_icon === 'string' 
+                        ? assets.basket_icon 
+                        : (assets.basket_icon?.src || assets.basket_icon || '/basket_icon.png')
+                    } 
                     alt="Cart" 
                   />
                   {getCartItemCount() > 0 && (
@@ -76,7 +80,7 @@ const Navbar = ({setShowLogin}) => {
               <span className={mobileMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
               <span className={mobileMenuOpen ? 'hamburger-line open' : 'hamburger-line'}></span>
             </div>
-        </div>
+              </div>
     </div>
   )
 }

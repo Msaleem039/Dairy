@@ -12,7 +12,11 @@ const FoodItem = ({ id, name, price, description, image }) => {
     <div className="food-item">
       <div className="food-item-img-container">
         <img 
-          src={image?.src || image} 
+          src={
+            typeof image === 'string' 
+              ? image 
+              : (image?.src || image || '/upload_area.png')
+          } 
           className="food-item-image" 
           alt={name}
         />

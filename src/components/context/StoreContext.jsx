@@ -6,28 +6,31 @@ import { food_list as fallback_food_list } from "../../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  // Load cart from localStorage on init
-  const getInitialCart = () => {
-    if (typeof window !== 'undefined') {
-      const savedCart = localStorage.getItem('cartItems');
-      return savedCart ? JSON.parse(savedCart) : {};
-    }
-    return {};
-  };
-
-  const [cartItems, setCartItems] = useState(getInitialCart);
   const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
   const [foodList, setFoodList] = useState([]);
   
-  // Initialize token from localStorage immediately
-  const getInitialToken = () => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem("token") || "";
-    }
-    return "";
-  };
+  // Initialize state with empty values to avoid hydration mismatch
+  const [cartItems, setCartItems] = useState({});
+  const [token, setToken] = useState("");
   
-  const [token, setToken] = useState(getInitialToken);
+  // Load from localStorage only on client side after mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem('cartItems');
+      if (savedCart) {
+        try {
+          setCartItems(JSON.parse(savedCart));
+        } catch (e) {
+          console.error('Error parsing cart from localStorage:', e);
+        }
+      }
+      
+      const savedToken = localStorage.getItem("token");
+      if (savedToken) {
+        setToken(savedToken);
+      }
+    }
+  }, []);
 
   // Persist cart to localStorage whenever it changes
   useEffect(() => {
@@ -106,17 +109,13 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     async function loadData() {
       await fetchFoodList();
-      const savedToken = localStorage.getItem("token");
-      if (savedToken) {
-        setToken(savedToken);
-        await loadCartData(savedToken);
-      } else {
-        // Ensure token state is cleared if not in localStorage
-        setToken("");
+      // Token is already loaded from localStorage in the first useEffect
+      if (token) {
+        await loadCartData(token);
       }
     }
     loadData();
-  }, []);
+  }, [token]);
 
   const contextValue = {
     // Use API list if available, otherwise fall back to bundled seed list

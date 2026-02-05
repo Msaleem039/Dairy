@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 const PlaceOrder = () => {
-  const {getTotalCartAmount, token, food_list, cartItems, url} = useContext(StoreContext);
+  const {getTotalCartAmount, token, food_list, cartItems, url, setCartItems} = useContext(StoreContext);
 
   const [data, setData] = useState({
     firstName:"",
@@ -43,25 +43,46 @@ const PlaceOrder = () => {
       amount:getTotalCartAmount()+2,
     }
 
-    let response = await axios.post(url+'/api/order/place', orderData,{headers:{token}})
-    if(response.data.success){
-      const {session_url} = response.data;
-      window.location.replace(session_url);
-    }
-    else{
-      alert('Error')
+    try {
+      let response = await axios.post(url+'/api/order/place', orderData,{headers:{token}})
+      if(response.data.success){
+        // Clear cart after successful order
+        setCartItems({});
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('cartItems', JSON.stringify({}));
+        }
+        
+        // Redirect to success page with order ID if available
+        const { orderId } = response.data;
+        const successUrl = orderId 
+          ? `/order-success?orderId=${orderId}` 
+          : '/order-success';
+        router.push(successUrl);
+      }
+      else{
+        alert(response.data.message || 'Error placing order. Please try again.')
+      }
+    } catch (error) {
+      console.error('Order placement error:', error);
+      alert(error.response?.data?.message || 'Error placing order. Please try again.')
     }
   }
 
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
 
-  useEffect(()=>{
-    if(!token){
-      router.push('/cart')
-    }else if(getTotalCartAmount()===0){
-      router.push('/cart')
-    }
-  },[token, router, getTotalCartAmount])
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
+  // useEffect(() => {
+  //   if (!isReady) return;
+  
+  //   if (!token || getTotalCartAmount() === 0) {
+  //     router.replace('/cart'); // 👈 replace, not push
+  //   }
+  // }, [isReady, token]);
+  
 
   return (
     <form onSubmit={placeOrder} className='place-order'>
@@ -102,7 +123,7 @@ const PlaceOrder = () => {
               <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
             </div> 
           </div>
-          <button type='submit'>PROCEED TO PAYMENT</button>
+          <button type='submit'>Place Order</button>
         </div>
       </div>
     </form>

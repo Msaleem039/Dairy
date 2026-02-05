@@ -2,17 +2,11 @@ import '../admin/admin.css';
 
 export const metadata = {
   title: 'Dairy Delight Admin',
-  description: ' for Dairy Delight',
+  description: 'Admin panel for Dairy Delight',
 };
 
 export default function AdminLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
-  );
+  return <>{children}</>;
 }
 
 

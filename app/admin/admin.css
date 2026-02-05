@@ -1,14 +1,20 @@
 :root{
-  --admin-bg: #f6f7fb;
-  --admin-card: rgba(255,255,255,0.9);
-  --admin-border: rgba(102,126,234,0.15);
+  --admin-bg: #035B57;
+  --admin-card: rgba(3,91,87,0.95);
+  --admin-border: rgba(255,255,255,0.2);
   --admin-accent: #667eea;
   --admin-accent2: #764ba2;
-  --admin-text: #1f2937;
+  --admin-text: #ffffff;
 }
 
-body{
+/* Admin-specific body styles - applied globally but only affect admin routes */
+body {
   margin: 0;
+}
+
+/* Admin shell takes full viewport */
+.admin-shell {
+  min-height: 100vh;
   background: var(--admin-bg);
   color: var(--admin-text);
   font-family: Outfit, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -28,9 +34,10 @@ body{
   align-items: center;
   justify-content: space-between;
   padding: 14px 18px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.75) 100%);
+  background: rgba(3,91,87,0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--admin-border);
+  color: white;
 }
 
 .admin-topbar .brand{
@@ -50,7 +57,7 @@ body{
   top: 0;
   height: 100vh;
   padding: 18px 14px;
-  background: linear-gradient(135deg, rgba(102,126,234,0.10) 0%, rgba(118,75,162,0.08) 100%);
+  background: rgba(3,91,87,0.8);
   border-right: 1px solid var(--admin-border);
 }
 
@@ -68,21 +75,22 @@ body{
   padding: 10px 12px;
   border-radius: 12px;
   text-decoration: none;
-  color: var(--admin-text);
+  color: white;
   border: 1px solid transparent;
   transition: transform .15s ease, background .15s ease, border-color .15s ease;
 }
 
 .admin-nav a:hover{
-  background: rgba(255,255,255,0.6);
-  border-color: var(--admin-border);
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.3);
   transform: translateY(-1px);
 }
 
 .admin-nav a.active{
-  background: rgba(255,255,255,0.85);
-  border-color: rgba(102,126,234,0.25);
-  box-shadow: 0 10px 25px rgba(102,126,234,0.12);
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  color: white;
 }
 
 .admin-nav a img{
@@ -100,12 +108,29 @@ body{
   padding: 18px;
 }
 
+@media (max-width: 768px){
+  .admin-content{
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px){
+  .admin-content{
+    padding: 10px;
+  }
+  
+  .admin-card{
+    padding: 12px;
+  }
+}
+
 .admin-card{
   background: var(--admin-card);
   border: 1px solid var(--admin-border);
   border-radius: 14px;
   padding: 16px;
   box-shadow: 0 18px 45px rgba(0,0,0,0.06);
+  color: white;
 }
 
 .admin-btn{
@@ -125,7 +150,7 @@ body{
   box-shadow: 0 18px 40px rgba(102,126,234,0.30);
 }
 .admin-muted{
-  color: rgba(31,41,55,0.65);
+  color: rgba(255,255,255,0.8);
   font-size: 14px;
 }
 
@@ -202,7 +227,7 @@ body{
   .admin-cell[data-label]::before{
     content: attr(data-label) ": ";
     font-weight: 800;
-    color: rgba(31,41,55,0.8);
+    color: rgba(255,255,255,0.9);
   }
 }
 

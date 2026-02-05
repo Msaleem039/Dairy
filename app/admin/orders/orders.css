@@ -1,0 +1,253 @@
+/* Admin Orders Page Responsive Styles */
+
+.admin-orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-orders-header h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.admin-order-card {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 14px;
+  padding: 16px;
+  background: rgba(3,91,87,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.admin-order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+}
+
+.admin-order-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-order-customer {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-order-customer-info {
+  flex: 1;
+}
+
+.admin-order-status-select {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.admin-order-status-select option {
+  background: #035B57;
+  color: white;
+}
+
+.admin-order-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.admin-order-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-order-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: white;
+}
+
+.admin-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
+}
+
+.admin-pagination-buttons {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Tab Styles */
+.admin-orders-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  flex-wrap: wrap;
+}
+
+.admin-orders-tab {
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.admin-orders-tab.active {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-weight: 700;
+  border-bottom: 2px solid white;
+}
+
+.admin-orders-tab:hover:not(.active) {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .admin-orders-tabs {
+    width: 100%;
+    gap: 5px;
+  }
+
+  .admin-orders-tab {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .admin-orders-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-orders-header h2 {
+    font-size: 20px;
+  }
+
+  .admin-order-header {
+    flex-direction: column;
+  }
+
+  .admin-order-status-select {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .admin-order-details-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .admin-order-customer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .admin-order-item {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .admin-order-item img {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .admin-pagination {
+    gap: 5px;
+  }
+
+  .admin-pagination button {
+    padding: 8px 12px !important;
+    font-size: 14px;
+  }
+
+  .admin-pagination-buttons {
+    gap: 3px;
+  }
+
+  .admin-pagination-buttons button {
+    padding: 8px 12px !important;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-orders-header h2 {
+    font-size: 18px;
+  }
+
+  .admin-orders-tab {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .admin-order-card {
+    padding: 12px;
+  }
+
+  .admin-order-customer-info {
+    font-size: 14px;
+  }
+
+  .admin-order-customer-info div {
+    font-size: 12px;
+  }
+
+  .admin-order-item {
+    flex-direction: column;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .admin-pagination {
+    flex-direction: column;
+  }
+
+  .admin-pagination button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+

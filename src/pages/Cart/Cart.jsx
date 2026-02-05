@@ -60,7 +60,21 @@ const Cart = () => {
               <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
             </div> 
           </div>
-          <button onClick={()=> router.push('/order')}>PROCEED TO CHECKOUT</button>
+        <button
+  type="button"
+  onClick={() => {
+    if (getTotalCartAmount() > 0) {
+      router.push('/order');   // ✅ CORRECT
+    } else {
+      alert('Your cart is empty. Please add items to proceed.');
+    }
+  }}
+  disabled={getTotalCartAmount() === 0}
+  className="opacity-100 disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  PROCEED TO CHECKOUT
+</button>
+
         </div>
         <div className="cart-promocode">
           <div>

@@ -1,0 +1,225 @@
+.welcome-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 91, 87, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.5s ease;
+}
+
+.welcome-popup-content {
+  background: linear-gradient(135deg, #035B57 0%, #027a75 100%);
+  border-radius: 30px;
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  animation: slideUp 0.6s ease, scaleIn 0.6s ease;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcome-popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.welcome-popup-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.welcome-popup-icon {
+  font-size: 80px;
+  animation: bounce 1s ease infinite;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.welcome-popup-title {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.welcome-popup-brand {
+  color: white;
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease 0.4s both;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-popup-message {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 18px;
+  margin: 15px 0 10px 0;
+  font-weight: 500;
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+.welcome-popup-submessage {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  margin: 10px 0 30px 0;
+  animation: fadeInUp 0.8s ease 0.8s both;
+}
+
+.welcome-popup-button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease 1s both;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-popup-button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.25) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 750px) {
+  .welcome-popup-content {
+    padding: 40px 30px;
+    border-radius: 25px;
+  }
+
+  .welcome-popup-icon {
+    font-size: 60px;
+  }
+
+  .welcome-popup-title {
+    font-size: 24px;
+  }
+
+  .welcome-popup-brand {
+    font-size: 36px;
+  }
+
+  .welcome-popup-message {
+    font-size: 16px;
+  }
+
+  .welcome-popup-submessage {
+    font-size: 14px;
+  }
+
+  .welcome-popup-button {
+    font-size: 16px;
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-popup-content {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .welcome-popup-icon {
+    font-size: 50px;
+  }
+
+  .welcome-popup-title {
+    font-size: 20px;
+  }
+
+  .welcome-popup-brand {
+    font-size: 30px;
+  }
+
+  .welcome-popup-message {
+    font-size: 14px;
+  }
+
+  .welcome-popup-submessage {
+    font-size: 12px;
+  }
+}
+

@@ -10,12 +10,19 @@ const Footer = () => {
     <div className='footer' id='footer'>
         <div className="footer-content">
             <div className="footer-content-left">
-                <img src={assets?.src || assets.logo} alt="Dairy Delight" />
+                <img src={assets.logo?.src || assets.logo || "/logo.png"} alt="Dairy Delight" className='h-20 w-20' />
                 <h3>Dairy Delight</h3>
                 <p>Premium quality shredded cheese products. We offer half kg, 1KG, and 2KG packages. Fresh, delicious, and delivered to your doorstep in Mugalpura, Lahore.</p>
                 <div className="footer-social-icons">
                     <Link href="https://www.facebook.com/profile.php?id=61584233731912" target="_blank" rel="noopener noreferrer">
-                        <img src={assets.facebook_icon?.src || assets.facebook_icon} alt="Facebook" />
+                        <img 
+                          src={
+                            typeof assets.facebook_icon === 'string' 
+                              ? assets.facebook_icon 
+                              : (assets.facebook_icon?.src || assets.facebook_icon || '/facebook_icon.png')
+                          } 
+                          alt="Facebook" 
+                        />
                     </Link>
                     <a href="https://wa.me/923250080999" target="_blank" rel="noopener noreferrer" className="whatsapp-icon">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

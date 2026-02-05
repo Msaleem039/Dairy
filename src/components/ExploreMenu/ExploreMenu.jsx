@@ -12,7 +12,9 @@ const ExploreMenu = ({category, setCategory}) => {
         <p className='explore-menu-text'>Choose from our premium shredded cheese packages - Half KG, 1KG, or 2KG. Fresh quality guaranteed!</p>
         <div className="explore-menu-list">
             {menu_list.map((item,index)=>{
-                const imageSrc = item.menu_image?.src || item.menu_image;
+                const imageSrc = typeof item.menu_image === 'string' 
+                    ? item.menu_image 
+                    : (item.menu_image?.src || item.menu_image || '/upload_area.png');
                 return (
                     <div 
                         onClick={()=>setCategory(prev=> prev === item.menu_name ? 'All' : item.menu_name)} 
@@ -28,7 +30,7 @@ const ExploreMenu = ({category, setCategory}) => {
                                 e.target.style.display = 'none';
                             }}
                         />
-                        <p>{item.menu_name}</p>
+                        <p className='text'>{item.menu_name}</p>
                     </div>
                 )
             })}
