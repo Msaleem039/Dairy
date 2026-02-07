@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import AdminShell from '../AdminShell';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
 
 export default function AdminList() {
   const [items, setItems] = useState([]);

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import AdminShell from '../AdminShell';
 import { menu_list } from '../../../src/assets/assets';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
 
 export default function AdminAdd() {
   const [image, setImage] = useState(null);

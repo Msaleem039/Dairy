@@ -6,7 +6,7 @@ import { food_list as fallback_food_list } from "../../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const url = process.env.NEXT_PUBLIC_API_URL || "https://api.dairydelightcheese.com";
   const [foodList, setFoodList] = useState([]);
   
   // Initialize state with empty values to avoid hydration mismatch

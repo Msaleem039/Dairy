@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     unoptimized: true,
-    domains: ['localhost'],
+    domains: ['localhost', 'api.dairydelightcheese.com'],
   },
   // Suppress Next.js dev overlay stack frame errors
   onDemandEntries: {
@@ -14,7 +14,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:5000/api/:path*',
+        destination: 'https://api.dairydelightcheese.com/api/:path*',
       },
     ];
   },

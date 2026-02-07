@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import AdminShell from '../AdminShell';
 import './orders.css';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
 const ITEMS_PER_PAGE = 10;
 
 export default function AdminOrders() {
