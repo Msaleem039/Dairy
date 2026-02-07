@@ -8,7 +8,7 @@ const List = ({url}) => {
   const [list, setList] = useState([]);
 
   const fetchList = async () =>{
-    const response = await axios.get(`${url}/api/food/list`)
+    const response = await axios.get(`Rs{url}/api/food/list`)
    
     if(response.data.success){
       setList(response.data.data)
@@ -21,7 +21,7 @@ const List = ({url}) => {
   const removeFood = async (foodId) =>{
 
     try {
-      const response = await axios.post(`${url}/api/food/remove`, { id: foodId });
+      const response = await axios.post(`Rs{url}/api/food/remove`, { id: foodId });
       await fetchList();
       
       if (response.data.success) {
@@ -61,14 +61,14 @@ const List = ({url}) => {
                   item?.image
                     ? (typeof item.image === 'string' && (item.image.startsWith('http://') || item.image.startsWith('https://')))
                       ? item.image
-                      : `${url}/images/${item.image}`
+                      : `Rs{url}/images/Rs{item.image}`
                     : assets?.upload_area
                 }
                 alt={item?.name || 'Product'}
               />
               <p>{item.name}</p>
               <p>{item.category}</p>
-              <p>${item.price}</p>
+              <p>Rs{item.price}</p>
               <p onClick={()=> removeFood(item._id)} className='cursor'>X</p>
             </div>
           )

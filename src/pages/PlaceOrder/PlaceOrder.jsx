@@ -57,7 +57,7 @@ const PlaceOrder = () => {
         // Redirect to success page with order ID if available
         const { orderId } = response.data;
         const successUrl = orderId 
-          ? `/order-success?orderId=${orderId}` 
+          ? `/order-success?orderId=Rs{orderId}` 
           : '/order-success';
         router.push(successUrl);
       }
@@ -112,17 +112,17 @@ const PlaceOrder = () => {
           <div>
           <div className="cart-total-detail">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>Rs{getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className="cart-total-detail">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount()===0?0:2}</p>
+              <p>Rs{getTotalCartAmount()===0?0:2}</p>
             </div>
             <hr />
             <div className="cart-total-detail">
               <b>Total</b>
-              <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+              <b>Rs{getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
             </div> 
           </div>
           <button type='submit'>Place Order</button>
