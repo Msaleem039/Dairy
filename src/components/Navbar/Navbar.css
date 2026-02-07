@@ -1,23 +1,25 @@
 .navbar{
-    padding: 20px 0px;
+    padding: 10px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(135deg, #035B57 0%, #027a75 100%);
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 6px 20px rgba(3, 91, 87, 0.3);
+    box-shadow: 0 4px 15px rgba(3, 91, 87, 0.3);
     position: sticky;
     top: 0;
     z-index: 1000;
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
+    min-height: 60px;
 }
 
 .navbar .logo{
-    width: 100px;
-    height: 60px;
-   
+    width: 90px;
+    height: auto;
+    max-height: 45px;
+    object-fit: contain;
 }
 
 .navbar-menu{
@@ -25,17 +27,19 @@
     list-style: none;
     gap: 30px;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
+    align-items: center;
 }
 
 .navbar-menu a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.9);
     position: relative;
-    padding: 5px 0;
+    padding: 4px 0;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .navbar-menu a::after {
@@ -64,20 +68,21 @@
 .navbar-right{
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .logout-btn {
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
-    font-size: 14px;
-    padding: 8px 20px;
+    font-size: 13px;
+    padding: 6px 18px;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
     backdrop-filter: blur(10px);
+    white-space: nowrap;
 }
 
 .logout-btn:hover {
@@ -87,8 +92,8 @@
 }
 
 .navbar-right img{
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     filter: brightness(0) invert(1);
     transition: all 0.3s ease;
@@ -96,11 +101,14 @@
 
 .navbar-search-icon {
     position: relative;
-    padding: 8px;
+    padding: 6px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     transition: all 0.3s ease;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar-search-icon:hover {
@@ -110,16 +118,17 @@
 
 .navbar button{
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.4);
-    padding: 12px 30px;
+    padding: 8px 24px;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
 }
 
 .navbar button:hover {
@@ -150,20 +159,20 @@
 
 .cart-count-badge{
     position: absolute;
-    min-width: 20px;
-    height: 20px;
+    min-width: 18px;
+    height: 18px;
     background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
     border-radius: 50%;
-    top: -5px;
-    right: -5px;
+    top: -4px;
+    right: -4px;
     box-shadow: 0 2px 10px rgba(255, 107, 107, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    padding: 0 5px;
+    padding: 0 4px;
     border: 2px solid white;
 }
 
@@ -223,14 +232,14 @@
     display: none;
     flex-direction: column;
     cursor: pointer;
-    gap: 5px;
+    gap: 4px;
     z-index: 1001;
-    padding: 5px;
+    padding: 4px;
 }
 
 .hamburger-line {
-    width: 25px;
-    height: 3px;
+    width: 22px;
+    height: 2.5px;
     background: white;
     border-radius: 3px;
     transition: all 0.3s ease;
@@ -251,67 +260,99 @@
 
 
 @media (max-width:1050px){
+    .navbar {
+        padding: 8px 15px;
+    }
+
     .navbar .logo{
-        width: 140px;
+        width: 80px;
+        max-height: 40px;
     }
 
     .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
+        gap: 18px;
+        font-size: 15px;
     }
 
     .navbar-right{
-        gap: 30px;
+        gap: 12px;
     }
 
     .navbar-right img{
         width: 22px;
+        height: 22px;
     }
 
     .navbar-right button{
-        padding: 10px 25px;
-        font-size: 15px;
+        padding: 7px 20px;
+        font-size: 13px;
+    }
+
+    .logout-btn {
+        padding: 6px 16px;
+        font-size: 12px;
     }
 }
 
 @media (max-width:900px){
+    .navbar {
+        padding: 8px 12px;
+    }
+
     .navbar .logo{
-        width: 120px;
+        width: 75px;
+        max-height: 38px;
     }
 
     .navbar-menu{
         gap: 15px;
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .navbar-right{
-        gap: 20px;
+        gap: 10px;
     }
 
     .navbar-right img{
         width: 20px;
+        height: 20px;
     }
 
     .navbar-right button{
-        padding: 8px 20px;
-        font-size: 14px;
+        padding: 6px 18px;
+        font-size: 12px;
+    }
+
+    .logout-btn {
+        padding: 5px 14px;
+        font-size: 11px;
     }
 }
 
 @media (max-width:750px){
+    .navbar {
+        padding: 8px 10px;
+        min-height: 55px;
+    }
+
+    .navbar .logo{
+        width: 70px;
+        max-height: 35px;
+    }
+
     .navbar-menu{
         position: fixed;
-        top: 70px;
+        top: 55px;
         left: -100%;
         flex-direction: column;
         background: linear-gradient(135deg, #035B57 0%, #027a75 100%);
         backdrop-filter: blur(20px);
         width: 100%;
-        padding: 30px 20px;
+        padding: 20px 15px;
         box-shadow: 0 10px 40px rgba(3, 91, 87, 0.4);
         transition: left 0.3s ease;
         z-index: 999;
-        gap: 20px;
+        gap: 0;
         border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     }
 
@@ -320,11 +361,12 @@
     }
 
     .navbar-menu a {
-        padding: 15px;
+        padding: 12px 15px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         color: white;
+        width: 100%;
     }
 
     .navbar-menu a:last-child {
@@ -334,23 +376,81 @@
     .hamburger-menu {
         display: flex;
     }
+
+    .navbar-right {
+        gap: 8px;
+    }
+
+    .navbar-right img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .navbar button {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+
+    .logout-btn {
+        padding: 5px 12px;
+        font-size: 11px;
+    }
 }
 
 @media (max-width:480px){
     .navbar {
-        padding: 15px 10px;
+        padding: 6px 8px;
+        min-height: 50px;
     }
 
     .navbar .logo{
-        width: 100px;
+        width: 60px;
+        max-height: 30px;
     }
 
     .navbar-right button{
-        padding: 8px 15px;
-        font-size: 12px;
+        padding: 5px 12px;
+        font-size: 11px;
     } 
 
+    .logout-btn {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
+
     .navbar-right{
-        gap: 15px;
+        gap: 6px;
+    }
+
+    .navbar-right img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .navbar-search-icon {
+        padding: 5px;
+    }
+
+    .cart-count-badge {
+        min-width: 16px;
+        height: 16px;
+        font-size: 9px;
+        top: -3px;
+        right: -3px;
+    }
+
+    .hamburger-line {
+        width: 20px;
+        height: 2px;
+    }
+
+    .navbar-menu {
+        top: 50px;
+        padding: 15px 10px;
+    }
+
+    .navbar-menu a {
+        padding: 10px 12px;
+        font-size: 15px;
     }
 }
