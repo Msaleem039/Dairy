@@ -7,7 +7,9 @@ import './FoodDisplay.css'
 
 const FoodDisplay = ({category}) => {
 
-    const {food_list} = useContext(StoreContext)
+    const store = useContext(StoreContext);
+    if (!store) return null;
+    const {food_list} = store;
 
   return (
     <div className='food-display' id='food-display'>

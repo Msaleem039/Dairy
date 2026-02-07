@@ -11,7 +11,9 @@ const Verify = () => {
     const searchParams = useSearchParams();
     const success = searchParams.get("success")
     const orderId = searchParams.get("orderId")
-    const {url} = useContext(StoreContext);
+    const store = useContext(StoreContext);
+    if (!store) return null;
+    const {url} = store;
     const router = useRouter();
 
     useEffect(()=>{

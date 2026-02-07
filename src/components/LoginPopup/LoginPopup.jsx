@@ -9,7 +9,9 @@ import { useRouter } from 'next/navigation'
 
 const LoginPopup = ({setShowLogin}) => {
 
-    const {url, setToken} = useContext(StoreContext)
+    const store = useContext(StoreContext);
+    if (!store) return null;
+    const {url, setToken} = store;
     const router = useRouter();
 
     const [currentState, setCurrentState] = useState('Login')

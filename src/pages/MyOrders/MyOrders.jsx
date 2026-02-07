@@ -8,7 +8,9 @@ import { assets } from './../../assets/assets';
 
 const MyOrders = () => {
 
-const {url, token} = useContext(StoreContext);
+const store = useContext(StoreContext);
+if (!store) return null;
+const {url, token} = store;
 const [data, setData] = useState([]);
 
 const fetchOrders = async () =>{

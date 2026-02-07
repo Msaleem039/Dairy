@@ -7,7 +7,9 @@ import { useRouter } from 'next/navigation';
 
 const Cart = () => {
 
-  const {cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+  const store = useContext(StoreContext);
+  if (!store) return null;
+  const {cartItems, food_list, removeFromCart, getTotalCartAmount } = store;
 
   const router = useRouter();
   return (

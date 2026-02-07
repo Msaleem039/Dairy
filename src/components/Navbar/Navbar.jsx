@@ -12,7 +12,9 @@ const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const {getTotalCartAmount, token, setToken, cartItems} = useContext(StoreContext);
+  const store = useContext(StoreContext);
+  if (!store) return null;
+  const {getTotalCartAmount, token, setToken, cartItems} = store;
 
   const router = useRouter();
 

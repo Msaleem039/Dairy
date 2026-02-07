@@ -7,7 +7,9 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 const PlaceOrder = () => {
-  const {getTotalCartAmount, token, food_list, cartItems, url, setCartItems} = useContext(StoreContext);
+  const store = useContext(StoreContext);
+  if (!store) return null;
+  const {getTotalCartAmount, token, food_list, cartItems, url, setCartItems} = store;
 
   const [data, setData] = useState({
     firstName:"",
