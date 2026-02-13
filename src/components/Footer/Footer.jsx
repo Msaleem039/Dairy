@@ -43,8 +43,8 @@ const Footer = () => {
             <div className="footer-content-right">
                 <h2>GET IN TOUCH</h2>
                 <ul>
-                    <li><strong>Call:</strong> <a href="tel:03250080999">0325-0080999</a></li>
-                    <li><strong>Location:</strong> Mugalpura, Lahore</li>
+                    <li><strong>Call:</strong> <a href="tel:03250080999">0325-0080999 , 0321-4340425</a></li>
+                    <li><strong>Location:</strong> Ashiana Shopping Centre Gullberg III Lahore</li>
                     <li><strong>Facebook:</strong> <Link href="https://www.facebook.com/profile.php?id=61584233731912" target="_blank" rel="noopener noreferrer">Visit Our Page</Link></li>
                 </ul>
             </div>
