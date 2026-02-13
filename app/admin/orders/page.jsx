@@ -4,7 +4,13 @@ import { useEffect, useState } from 'react';
 import AdminShell from '../AdminShell';
 import './orders.css';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
+// Normalize API URL: remove trailing /api if present
+let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
+if (baseUrl.endsWith('/api')) {
+  baseUrl = baseUrl.slice(0, -4);
+}
+baseUrl = baseUrl.replace(/\/$/, '');
+const API_URL = baseUrl;
 const ITEMS_PER_PAGE = 10;
 
 export default function AdminOrders() {
@@ -315,8 +321,8 @@ export default function AdminOrders() {
                   </div>
 
                   <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(102,126,234,0.1)' }}>
-                    <div className="admin-muted" style={{ fontSize: '12px', marginBottom: 8 }}>📍 Address</div>
-                    <div style={{ fontSize: '13px', color: '#555' }}>
+                    <div className="admin-muted" style={{ fontSize: '12px', marginBottom: 8 ,textcolor: 'white' }}>📍 Address</div>
+                    <div style={{ fontSize: '13px', color: 'white' }}>
                       {o.address?.street}, {o.address?.city}, {o.address?.state}, {o.address?.zipcode}, {o.address?.country}
                     </div>
                   </div>

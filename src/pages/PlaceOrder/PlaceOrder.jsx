@@ -44,7 +44,6 @@ const PlaceOrder = () => {
       items:orderItems,
       amount:getTotalCartAmount()+2,
     }
-
     try {
       let response = await axios.post(url+'/api/order/place', orderData,{headers:{token}})
       if(response.data.success){

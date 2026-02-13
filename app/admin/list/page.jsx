@@ -3,7 +3,13 @@
 import { useEffect, useState } from 'react';
 import AdminShell from '../AdminShell';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
+// Normalize API URL: remove trailing /api if present
+let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
+if (baseUrl.endsWith('/api')) {
+  baseUrl = baseUrl.slice(0, -4);
+}
+baseUrl = baseUrl.replace(/\/$/, '');
+const API_URL = baseUrl;
 
 export default function AdminList() {
   const [items, setItems] = useState([]);

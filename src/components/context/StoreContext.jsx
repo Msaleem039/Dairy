@@ -6,7 +6,15 @@ import { food_list as fallback_food_list } from "../../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = process.env.NEXT_PUBLIC_API_URL || "https://api.dairydelightcheese.com";
+  // Normalize URL: remove trailing /api if present, we'll append it in requests
+  let baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.dairydelightcheese.com";
+  // Remove trailing /api if it exists
+  if (baseUrl.endsWith('/api')) {
+    baseUrl = baseUrl.slice(0, -4);
+  }
+  // Remove trailing slash
+  baseUrl = baseUrl.replace(/\/$/, '');
+  const url = baseUrl;
   const [foodList, setFoodList] = useState([]);
   
   // Initialize state with empty values to avoid hydration mismatch
