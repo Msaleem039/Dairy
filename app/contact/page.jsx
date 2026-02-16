@@ -29,7 +29,7 @@ export default function ContactPage() {
             📍 Location
           </h2>
           <p style={{ fontSize: '18px', color: '#555', marginBottom: '10px' }}>
-            Mugalpura, Lahore
+          Ashiana Shopping Centre Gullberg III Lahore
           </p>
           <p style={{ fontSize: '16px', color: '#777' }}>
             Visit us at our location
@@ -87,6 +87,8 @@ export default function ContactPage() {
     </div>
   );
 }
+
+
 
 
 

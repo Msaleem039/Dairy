@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import { getApiBaseUrl, getImageUrl } from '../../../utils/apiConfig';
 
 const List = ({url}) => {
-
+  const apiUrl = url || getApiBaseUrl();
   const [list, setList] = useState([]);
 
   const fetchList = async () =>{
-    const response = await axios.get(`Rs{url}/api/food/list`)
+    const response = await axios.get(`${apiUrl}/api/food/list`)
    
     if(response.data.success){
       setList(response.data.data)
@@ -21,7 +22,7 @@ const List = ({url}) => {
   const removeFood = async (foodId) =>{
 
     try {
-      const response = await axios.post(`Rs{url}/api/food/remove`, { id: foodId });
+      const response = await axios.post(`${apiUrl}/api/food/remove`, { id: foodId });
       await fetchList();
       
       if (response.data.success) {
@@ -57,14 +58,9 @@ const List = ({url}) => {
           return(
             <div key={index} className="list-table-format">
               <img
-                src={
-                  item?.image
-                    ? (typeof item.image === 'string' && (item.image.startsWith('http://') || item.image.startsWith('https://')))
-                      ? item.image
-                      : `Rs{url}/images/Rs{item.image}`
-                    : assets?.upload_area
-                }
+                src={getImageUrl(item?.image)}
                 alt={item?.name || 'Product'}
+                onError={(e) => { e.target.src = '/upload_area.png'; }}
               />
               <p>{item.name}</p>
               <p>{item.category}</p>

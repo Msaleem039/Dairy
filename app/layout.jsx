@@ -1,4 +1,5 @@
 import StoreContextProvider from '../src/components/context/StoreContext';
+import StoreProvider from '../src/store/StoreProvider';
 import ClientWrapper from './ClientWrapper';
 import '../src/index.css';
 
@@ -11,11 +12,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <StoreContextProvider>
-          <ClientWrapper>
-            {children}
-          </ClientWrapper>
-        </StoreContextProvider>
+        <StoreProvider>
+          <StoreContextProvider>
+            <ClientWrapper>
+              {children}
+            </ClientWrapper>
+          </StoreContextProvider>
+        </StoreProvider>
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../components/context/StoreContext'
 import { useRouter } from 'next/navigation';
+import { getImageUrl } from '../../utils/apiConfig';
 
 const Cart = () => {
 
@@ -27,9 +28,9 @@ const Cart = () => {
         <hr />
         {food_list.map((item,index)=>{
           if(cartItems[item._id]>0){
-            return <div>
+            return <div key={item._id || index}>
               <div className="cart-items-title cart-items-item">
-              <img src={item.image} alt="" />
+              <img src={getImageUrl(item.image)} alt={item.name || ''} onError={(e) => { e.target.src = '/upload_area.png'; }} />
               <p>{item.name}</p>
               <p>Rs{item.price}</p>
               <p>{cartItems[item._id]}</p>

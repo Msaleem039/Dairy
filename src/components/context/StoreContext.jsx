@@ -2,19 +2,12 @@
 
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { food_list as fallback_food_list } from "../../assets/assets";
+import { getApiBaseUrl } from "../../utils/apiConfig";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  // Normalize URL: remove trailing /api if present, we'll append it in requests
-  let baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.dairydelightcheese.com";
-  // Remove trailing /api if it exists
-  if (baseUrl.endsWith('/api')) {
-    baseUrl = baseUrl.slice(0, -4);
-  }
-  // Remove trailing slash
-  baseUrl = baseUrl.replace(/\/$/, '');
-  const url = baseUrl;
+  // Use centralized API URL utility for consistency
+  const url = getApiBaseUrl();
   const [foodList, setFoodList] = useState([]);
   
   // Initialize state with empty values to avoid hydration mismatch
@@ -126,8 +119,8 @@ const StoreContextProvider = (props) => {
   }, [token]);
 
   const contextValue = {
-    // Use API list if available, otherwise fall back to bundled seed list
-    food_list: (foodList && foodList.length > 0) ? foodList : fallback_food_list,
+    // Only use backend data, no hardcoded fallback
+    food_list: Array.isArray(foodList) ? foodList : [],
     cartItems,
     setCartItems,
     addToCart,

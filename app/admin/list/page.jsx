@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import AdminShell from '../AdminShell';
-
-// Normalize API URL: remove trailing /api if present
-let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
-if (baseUrl.endsWith('/api')) {
-  baseUrl = baseUrl.slice(0, -4);
-}
-baseUrl = baseUrl.replace(/\/$/, '');
-const API_URL = baseUrl;
+import { getApiBaseUrl } from '../../../src/utils/apiConfig';
 
 export default function AdminList() {
   const [items, setItems] = useState([]);
@@ -18,12 +11,13 @@ export default function AdminList() {
   const getImageSrc = (image) => {
     if (!image) return '/upload_area.png';
     if (typeof image === 'string' && (image.startsWith('http://') || image.startsWith('https://'))) return image;
-    return `${API_URL}/images/${image}`;
+    return `${getApiBaseUrl()}/images/${image}`;
   };
 
   const fetchList = async () => {
     setStatus('Loading...');
-    const res = await fetch(`${API_URL}/api/food/list`);
+    const apiUrl = `${getApiBaseUrl()}/api/food/list`;
+    const res = await fetch(apiUrl);
     const json = await res.json();
     setItems(json.data || json?.data?.data || json?.data || []);
     setStatus('');
@@ -34,7 +28,8 @@ export default function AdminList() {
   const removeFood = async (id) => {
     try {
       setStatus('Removing...');
-      const res = await fetch(`${API_URL}/api/food/remove`, {
+      const apiUrl = `${getApiBaseUrl()}/api/food/remove`;
+      const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),

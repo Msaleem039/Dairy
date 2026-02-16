@@ -3,14 +3,7 @@
 import { useState } from 'react';
 import AdminShell from '../AdminShell';
 import { menu_list } from '../../../src/assets/assets';
-
-// Normalize API URL: remove trailing /api if present
-let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
-if (baseUrl.endsWith('/api')) {
-  baseUrl = baseUrl.slice(0, -4);
-}
-baseUrl = baseUrl.replace(/\/$/, '');
-const API_URL = baseUrl;
+import { getApiBaseUrl } from '../../../src/utils/apiConfig';
 
 export default function AdminAdd() {
   const [image, setImage] = useState(null);
@@ -37,7 +30,8 @@ export default function AdminAdd() {
       formData.append('category', data.category);
       if (image) formData.append('image', image);
 
-      const res = await fetch(`${API_URL}/api/food/add`, {
+      const apiUrl = `${getApiBaseUrl()}/api/food/add`;
+      const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { token },
         body: formData,

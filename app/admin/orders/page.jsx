@@ -3,14 +3,8 @@
 import { useEffect, useState } from 'react';
 import AdminShell from '../AdminShell';
 import './orders.css';
+import { getApiBaseUrl } from '../../../src/utils/apiConfig';
 
-// Normalize API URL: remove trailing /api if present
-let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.dairydelightcheese.com';
-if (baseUrl.endsWith('/api')) {
-  baseUrl = baseUrl.slice(0, -4);
-}
-baseUrl = baseUrl.replace(/\/$/, '');
-const API_URL = baseUrl;
 const ITEMS_PER_PAGE = 10;
 
 export default function AdminOrders() {
@@ -24,7 +18,8 @@ export default function AdminOrders() {
   const fetchPendingOrders = async () => {
     setStatus('Loading pending orders...');
     try {
-      const res = await fetch(`${API_URL}/api/order/list`);
+      const apiUrl = `${getApiBaseUrl()}/api/order/list`;
+      const res = await fetch(apiUrl);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -80,7 +75,8 @@ export default function AdminOrders() {
   const fetchDeliveredOrders = async () => {
     setStatus('Loading delivered orders...');
     try {
-      const res = await fetch(`${API_URL}/api/order/delivered`);
+      const apiUrl = `${getApiBaseUrl()}/api/order/delivered`;
+      const res = await fetch(apiUrl);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -135,7 +131,8 @@ export default function AdminOrders() {
   const statusHandler = async (orderId, nextStatus) => {
     setStatus('Updating...');
     try {
-      const res = await fetch(`${API_URL}/api/order/status`, {
+      const apiUrl = `${getApiBaseUrl()}/api/order/status`;
+      const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orderId, status: nextStatus }),

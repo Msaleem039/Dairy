@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { assets } from "../../assets/assets";
 import "./FoodItem.css";
 import { StoreContext } from '../context/StoreContext';
+import { getImageUrl } from '../../utils/apiConfig';
 
 const FoodItem = ({ id, name, price, description, image }) => {
   const store = useContext(StoreContext);
@@ -14,13 +15,13 @@ const FoodItem = ({ id, name, price, description, image }) => {
     <div className="food-item">
       <div className="food-item-img-container">
         <img 
-          src={
-            typeof image === 'string' 
-              ? image 
-              : (image?.src || image || '/upload_area.png')
-          } 
+          src={getImageUrl(image)} 
           className="food-item-image" 
           alt={name}
+          onError={(e) => {
+            // Fallback to default image if the image fails to load
+            e.target.src = '/upload_area.png';
+          }}
         />
 
         {!cartItems[id] ? (    //changes made 
