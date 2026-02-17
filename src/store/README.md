@@ -94,3 +94,5 @@ The setup automatically normalizes the URL (removes trailing `/api` if present).
 The existing `StoreContext` still works alongside RTK Query. You can gradually migrate components to use RTK Query hooks instead of the context API.
 
 
+
+
